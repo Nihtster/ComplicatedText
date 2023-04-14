@@ -10,7 +10,7 @@ ComplicatedText is an over-the-top text generator that recreates a given sentenc
 
 ## Description
 
-ComplicatedText is comparable to traditional split-flap message boards seen in places like airports and train stations where characters
+ComplicatedText is a digital reacreation of the traditional split-flap message boards seen in places like airports and train stations where characters
 are cycled through until the desired message is reached. The project, which was inspired by an Instagram post that implemented the concept through Python, 
 aims to do just that and them some. As of right now, ComplicatedText is a testing platform for a future concept that will add functionality to what was simply a project done for fun.
 
