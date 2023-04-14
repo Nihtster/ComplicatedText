@@ -2,10 +2,35 @@
 
 ComplicatedText is an over-the-top text generator that recreates a given sentence through the use of a character randomizer.
 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/77190903/232137745-e5a41f7a-85f6-4c2b-b821-bc5344b6f96d.gif" alt="animated" width = "500" height = "700"/>
+</p>
+
+
 ## Description
 
-ComplicatedText is comparable to traditional split-flap message boards seen in places like airports and train stations. 
-This program was inspired by an Instagram post where the concept was created in Python. This project recreates that concept but in Java.
+ComplicatedText is comparable to traditional split-flap message boards seen in places like airports and train stations where characters
+are cycled through until the desired message is reached. The project, which was inspired by an Instagram post that implemented the concept through Python, 
+aims to do just that and them some. As of right now, ComplicatedText is a testing platform for a future concept that will add functionality to what was simply a project done for fun.
+
+## Roadmap
+
+[x] Design the concept code that implements the split-flap concept in Java <br/>
+[ ] Design and create a JavaFX GUI for the base code<br/>
+[ ] Publish a working .exe or .jar version of the project<br/>
+
+## Goals
+
+As mentioned, this project is a testing platform, but what exactly is being tested? Below are the goals I aim to achieve with this project.
+There is no set end goal as this project is more to learn and gain more experience in certain aspects of programming and development. 
+Below is a list of some concepts I hope to gain from this project: <br/>
+
+* Program design & optiization (Through Java)
+* GUI fundementals and experience (Through JavaFX)
+* Multi-threading (Through Java)
+* Github fundementals and repository maintenance
+* Personal software design practices & routines
 
 ## Getting Started
 
@@ -43,15 +68,10 @@ command to run if program contains helper info
  
 ## Version History
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
 * 0.1
-    * Initial Public Release
-
-## Roadmap
-
-* Empty for now
+    * Initial Repository Creation
+    * Upload of the concept base code
+    * Pre-publish maintenance (LICENSE & README)
 
 ## License
 
