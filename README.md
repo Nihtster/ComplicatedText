@@ -37,7 +37,9 @@ command to run if program contains helper info
 ``` -->
 
 ## Authors
- * [Nihtster](https://discord.com/users/153304819665338370)
+  This project is done and maintained by one person as of right now.
+  
+ * [Nihtster (Creator)](https://discord.com/users/153304819665338370)
  
 ## Version History
 
@@ -55,11 +57,4 @@ command to run if program contains helper info
 
 This project is licensed under the [MIT] License - see the LICENSE.md file for details
 
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+<!-- ## Acknowledgments -->
