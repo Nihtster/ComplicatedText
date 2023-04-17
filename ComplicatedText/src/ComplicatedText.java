@@ -12,24 +12,19 @@ import java.util.Random;
 public class ComplicatedText {
 
     Random rcg;
-    Random rng;
     Random rcgCap;
+    Random rng;
 
     String ogStr;
     String testStr;
     String finalStr;
 
     int strLen;
-    int spaceLoc;
     int attemptCnt;
 
     boolean match;
     boolean partialMatch;
     int identicalEnd;
-
-    int spaceIndex[];
-    String words[];
-    int spaceCnt;
 
     public ComplicatedText() {
         rcg = new Random();
@@ -41,15 +36,12 @@ public class ComplicatedText {
         finalStr = "";
 
         strLen = ogStr.length();
-        spaceLoc = ogStr.indexOf(" ");
         attemptCnt = 0;
 
         match = false;
         partialMatch = false;
         identicalEnd = 0;
 
-        spaceIndex = new int[spaceCnt];
-        words = new String[spaceCnt + 1];
     }
 
     public ComplicatedText(String givenStr) {
@@ -62,7 +54,6 @@ public class ComplicatedText {
         finalStr = "";
 
         strLen = ogStr.length();
-        spaceLoc = ogStr.indexOf(" ");
         attemptCnt = 0;
 
         match = false;
@@ -104,7 +95,6 @@ public class ComplicatedText {
             }
 
             if (rng.nextInt(2) == 0) {
-
                 if (rng.nextInt(2) == 1) {
                     char cCap = (char) (rcg.nextInt(65, 90));
                     if (ogStr.charAt(i) == ' ') {
@@ -169,7 +159,7 @@ public class ComplicatedText {
         do {
             System.out.println(instance.attemptGen());
             instance.compareAttempt();
-            Thread.sleep(25);
+            Thread.sleep(40);
         } while (instance.getMatch() != true);
 
         System.out.println();
