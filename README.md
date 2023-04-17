@@ -73,9 +73,13 @@ This project is done and maintained by one person as of right now.
   - Pre-publish maintenance (LICENSE & README)
 
 - 0.2
+
   - Updated program for longer sentences
   - Created RNGs for capital letters and symbols
   - Removed unused variables
+
+- 0.3
+  - Optimized and condensed program into one core method that generates and does comparisons
 
 ## License
 

@@ -61,26 +61,25 @@ public class ComplicatedText {
      */
     public void attemptGen() {
         finalStr = temp;
-        if (!match) {
-            for (int i = identicalEnd; i < strLen; i++) {
-                char c = (char) (rcg.nextInt(32, 126));
-                finalStr = finalStr + c;
-            }
-            for (int i = 0; i < strLen; i++) {
-                if (ogStr.charAt(i) == (finalStr.charAt(i))) {
-                    identicalEnd = i + 1;
-                    temp = finalStr.substring(0, identicalEnd);
-                } else {
-                    System.out.println(finalStr);
-                    finalStr = "";
-                    break;
-                }
-            }
-            if (finalStr.equals(ogStr)) {
+        for (int i = identicalEnd; i < strLen; i++) {
+            char c = (char) (rcg.nextInt(32, 126));
+            finalStr = finalStr + c;
+        }
+        for (int i = 0; i < strLen; i++) {
+            if (ogStr.charAt(i) == (finalStr.charAt(i))) {
+                identicalEnd = i + 1;
+                temp = finalStr.substring(0, identicalEnd);
+            } else {
                 System.out.println(finalStr);
-                match = true;
+                finalStr = "";
+                break;
             }
         }
+        if (finalStr.equals(ogStr)) {
+            System.out.println(finalStr);
+            match = true;
+        }
+
         attemptCnt++;
     }
 
