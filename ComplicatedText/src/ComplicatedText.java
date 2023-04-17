@@ -7,57 +7,31 @@ import java.util.Random;
  * the rest of the word.
  * 
  * @author Christian "Nihtster" Ilog
- * @version 0.2
+ * @version 0.3
  */
 public class ComplicatedText {
-
     Random rcg;
-    Random rcgCap;
-    Random rng;
 
     String ogStr;
-    String testStr;
+    String temp;
     String finalStr;
 
     int strLen;
     int attemptCnt;
 
     boolean match;
-    boolean partialMatch;
     int identicalEnd;
-
-    public ComplicatedText() {
-        rcg = new Random();
-        rcgCap = new Random();
-        rng = new Random();
-
-        ogStr = "hello world i now can handle longer strings";
-        testStr = "";
-        finalStr = "";
-
-        strLen = ogStr.length();
-        attemptCnt = 0;
-
-        match = false;
-        partialMatch = false;
-        identicalEnd = 0;
-
-    }
 
     public ComplicatedText(String givenStr) {
         rcg = new Random();
-        rcgCap = new Random();
-        rng = new Random();
 
+        temp = "";
         ogStr = givenStr;
-        testStr = "";
-        finalStr = "";
 
         strLen = ogStr.length();
         attemptCnt = 0;
 
         match = false;
-        partialMatch = false;
         identicalEnd = 0;
     }
 
@@ -81,85 +55,43 @@ public class ComplicatedText {
     }
 
     /**
-     * This function generates a random string with a specified length and a
-     * possible space character
-     * at a specified location.
-     * 
-     * @return The method `attemptGen()` is returning a `String` value.
+     * This function generates a random string and checks if it matches a given
+     * original string, with a
+     * limit on the number of attempts.
      */
-    public String attemptGen() {
-        for (int i = identicalEnd; i < strLen; i++) {
-            if (partialMatch) {
-                testStr = finalStr;
-                partialMatch = false;
+    public void attemptGen() {
+        finalStr = temp;
+        if (!match) {
+            for (int i = identicalEnd; i < strLen; i++) {
+                char c = (char) (rcg.nextInt(32, 126));
+                finalStr = finalStr + c;
             }
-
-            if (rng.nextInt(2) == 0) {
-                if (rng.nextInt(2) == 1) {
-                    char cCap = (char) (rcg.nextInt(65, 90));
-                    if (ogStr.charAt(i) == ' ') {
-                        testStr = testStr + " ";
-                    }
-                    testStr = testStr + cCap;
+            for (int i = 0; i < strLen; i++) {
+                if (ogStr.charAt(i) == (finalStr.charAt(i))) {
+                    identicalEnd = i + 1;
+                    temp = finalStr.substring(0, identicalEnd);
                 } else {
-                    char c = (char) (rcg.nextInt(97, 122));
-                    if (ogStr.charAt(i) == ' ') {
-                        testStr = testStr + " ";
-                    }
-                    testStr = testStr + c;
+                    System.out.println(finalStr);
+                    finalStr = "";
+                    break;
                 }
-
-            } else {
-                char s = (char) (rcg.nextInt(33, 64));
-                if (ogStr.charAt(i) == ' ') {
-                    testStr = testStr + " ";
-                }
-                testStr = testStr + s;
+            }
+            if (finalStr.equals(ogStr)) {
+                System.out.println(finalStr);
+                match = true;
             }
         }
         attemptCnt++;
-        return testStr;
-    }
-
-    /*
-     * All inclusive of ascii table vs version above where each one is separated.
-     * char c = (char) (rcg.nextInt(33, 126));
-     * if (ogStr.charAt(i) == ' ') {
-     * testStr = testStr + " ";
-     * }
-     * testStr = testStr + c;
-     */
-
-    /**
-     * The function compares two strings character by character and sets a flag if
-     * there is a partial
-     * or full match.
-     */
-    public void compareAttempt() {
-        for (int i = 0; i < strLen; i++) {
-            if (ogStr.charAt(i) == (testStr.charAt(i))) {
-                identicalEnd = i + 1;
-                finalStr = testStr.substring(0, identicalEnd);
-                partialMatch = true;
-            } else {
-                testStr = "";
-                break;
-            }
-        }
-        if (finalStr.equals(ogStr)) {
-            match = true;
-        }
     }
 
     public static void main(String[] args) throws InterruptedException {
         // attempt generation;
 
-        ComplicatedText instance = new ComplicatedText("What is my purpose?");
+        ComplicatedText instance = new ComplicatedText("Wanna Get Jamba Juice??");
 
         do {
-            System.out.println(instance.attemptGen());
-            instance.compareAttempt();
-            Thread.sleep(40);
+            instance.attemptGen();
+            Thread.sleep(2);
         } while (instance.getMatch() != true);
 
         System.out.println();
