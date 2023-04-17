@@ -7,23 +7,87 @@ import java.util.Random;
  * the rest of the word.
  * 
  * @author Christian "Nihtster" Ilog
- * @version 1.0
+ * @version 0.2
  */
 public class ComplicatedText {
 
-    static Random rnd = new Random();
+    Random rcg;
+    Random rng;
+    Random rcgCap;
 
-    static String subject = "sussy baka";
-    static String testStr = "";
-    static String finalStr = "";
+    String ogStr;
+    String testStr;
+    String finalStr;
 
-    static int strLen = subject.length();
-    static int spaceLoc = subject.indexOf(" ");
-    static int attemptCnt = 0;
+    int strLen;
+    int spaceLoc;
+    int attemptCnt;
 
-    static boolean match = false;
-    static boolean partialMatch = false;
-    static int identicalEnd = 0;
+    boolean match;
+    boolean partialMatch;
+    int identicalEnd;
+
+    int spaceIndex[];
+    String words[];
+    int spaceCnt;
+
+    public ComplicatedText() {
+        rcg = new Random();
+        rcgCap = new Random();
+        rng = new Random();
+
+        ogStr = "hello world i now can handle longer strings";
+        testStr = "";
+        finalStr = "";
+
+        strLen = ogStr.length();
+        spaceLoc = ogStr.indexOf(" ");
+        attemptCnt = 0;
+
+        match = false;
+        partialMatch = false;
+        identicalEnd = 0;
+
+        spaceIndex = new int[spaceCnt];
+        words = new String[spaceCnt + 1];
+    }
+
+    public ComplicatedText(String givenStr) {
+        rcg = new Random();
+        rcgCap = new Random();
+        rng = new Random();
+
+        ogStr = givenStr;
+        testStr = "";
+        finalStr = "";
+
+        strLen = ogStr.length();
+        spaceLoc = ogStr.indexOf(" ");
+        attemptCnt = 0;
+
+        match = false;
+        partialMatch = false;
+        identicalEnd = 0;
+    }
+
+    // This is a getter method for the private boolean variable `match`. It returns
+    // the value of `match`
+    // to the caller.
+    /**
+     * @return boolean
+     */
+    public boolean getMatch() {
+        return match;
+    }
+
+    /**
+     * This Java function returns the value of the variable "attemptCnt".
+     * 
+     * @return The method is returning the value of the variable `attemptCnt`.
+     */
+    public int getAttemptCnt() {
+        return attemptCnt;
+    }
 
     /**
      * This function generates a random string with a specified length and a
@@ -32,31 +96,58 @@ public class ComplicatedText {
      * 
      * @return The method `attemptGen()` is returning a `String` value.
      */
-    public static String attemptGen() {
+    public String attemptGen() {
         for (int i = identicalEnd; i < strLen; i++) {
             if (partialMatch) {
                 testStr = finalStr;
                 partialMatch = false;
             }
 
-            char c = (char) ('a' + rnd.nextInt(26));
-            if (i == spaceLoc) {
-                testStr = testStr + " ";
+            if (rng.nextInt(2) == 0) {
+
+                if (rng.nextInt(2) == 1) {
+                    char cCap = (char) (rcg.nextInt(65, 90));
+                    if (ogStr.charAt(i) == ' ') {
+                        testStr = testStr + " ";
+                    }
+                    testStr = testStr + cCap;
+                } else {
+                    char c = (char) (rcg.nextInt(97, 122));
+                    if (ogStr.charAt(i) == ' ') {
+                        testStr = testStr + " ";
+                    }
+                    testStr = testStr + c;
+                }
+
+            } else {
+                char s = (char) (rcg.nextInt(33, 64));
+                if (ogStr.charAt(i) == ' ') {
+                    testStr = testStr + " ";
+                }
+                testStr = testStr + s;
             }
-            testStr = testStr + c;
         }
         attemptCnt++;
         return testStr;
     }
+
+    /*
+     * All inclusive of ascii table vs version above where each one is separated.
+     * char c = (char) (rcg.nextInt(33, 126));
+     * if (ogStr.charAt(i) == ' ') {
+     * testStr = testStr + " ";
+     * }
+     * testStr = testStr + c;
+     */
 
     /**
      * The function compares two strings character by character and sets a flag if
      * there is a partial
      * or full match.
      */
-    public static void compareAttempt() {
+    public void compareAttempt() {
         for (int i = 0; i < strLen; i++) {
-            if (subject.charAt(i) == (testStr.charAt(i))) {
+            if (ogStr.charAt(i) == (testStr.charAt(i))) {
                 identicalEnd = i + 1;
                 finalStr = testStr.substring(0, identicalEnd);
                 partialMatch = true;
@@ -65,33 +156,23 @@ public class ComplicatedText {
                 break;
             }
         }
-        if (finalStr.equals(subject)) {
+        if (finalStr.equals(ogStr)) {
             match = true;
         }
     }
 
-    // This is the main method of the `ComplicatedHello` class. It takes an array of
-    // strings `args` as
-    // a parameter and throws an `InterruptedException`. It generates random strings
-    // using the
-    // `attemptGen()` method and compares them to the `subject` string using the
-    // `compareAttempt()`
-    // method. It continues to generate and compare strings until a match is found.
-    // The number of
-    // attempts made is printed to the console.
-    /**
-     * @param args
-     * @throws InterruptedException
-     */
     public static void main(String[] args) throws InterruptedException {
         // attempt generation;
+
+        ComplicatedText instance = new ComplicatedText("What is my purpose?");
+
         do {
-            System.out.println(attemptGen());
-            compareAttempt();
-            Thread.sleep(20);
-        } while (match != true);
+            System.out.println(instance.attemptGen());
+            instance.compareAttempt();
+            Thread.sleep(25);
+        } while (instance.getMatch() != true);
 
         System.out.println();
-        System.out.println("Attempt count: " + attemptCnt);
+        System.out.println("Attempt count: " + instance.getAttemptCnt());
     }
 }
