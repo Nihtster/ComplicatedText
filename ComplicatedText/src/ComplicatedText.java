@@ -1,7 +1,7 @@
 import java.util.Random;
 
 /**
- * ComplicatedHello generates a collection of random characters, in an attempt
+ * ComplicatedText generates a collection of random characters, in an attempt
  * to match the given word or sentence.
  * After each matched letter, it keeps that in "memory" and attempts to match
  * the rest of the word.

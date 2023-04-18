@@ -66,6 +66,8 @@ This project is done and maintained by one person as of right now.
 
 ## Version History
 
+### Core Logic
+
 - 0.1
 
   - Initial Repository Creation
@@ -80,6 +82,19 @@ This project is done and maintained by one person as of right now.
 
 - 0.3
   - Optimized and condensed program into one core method that generates and does comparisons
+
+### UI
+
+- 0.1
+
+  - Initial creation of the JavaFX file
+  - Creation of a blank window
+
+- 0.2
+  - Creation of a rough mockup of how the UI will look
+    - Position/style of text display
+    - Position of user entry TextField
+    - Position of buttons user interacts with
 
 ## License
 
