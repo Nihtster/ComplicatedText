@@ -28,10 +28,10 @@ P = in progress<br/>
 
 [C] Design the concept code that implements the split-flap concept in Java <br/>
 [C] Design and create a JavaFX GUI mockup for the base code<br/>
-[P] Implement modularity in the program designs
-[P] Design and implement the EventHandler for the GUI mockup
-[P] Implement more functionality to the UI (settings bar, toggleable settings)
-[ ] Redesign the logic code for GUI implementation
+[P] Implement modularity in the program designs<br/>
+[P] Design and implement the EventHandler for the GUI mockup<br/>
+[P] Implement more functionality to the UI (settings bar, toggleable settings)<br/>
+[ ] Redesign the logic code for GUI implementation<br/>
 
 ## Goals
 
